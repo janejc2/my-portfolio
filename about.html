@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Jane J Chen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green:       #456453;
+      --green-hover: #4e7362;
+      --green-dark:  #3a5547;
+      --dark:        #1c1c1c;
+      --muted:       #555;
+      --footer-bg:   #456453;
+      --cream:       #f5efe0;
+      --radius:      6px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: #fff;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* ── FOCUS ─────────────────────────────────────── */
+    :focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    footer :focus-visible {
+      outline-color: #fff;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+      box-shadow: 0 0 0 5px var(--green);
+    }
+
+    /* ── LINKS — light background ───────────────────── */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--green-hover);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── LINKS — dark background (footer) ───────────── */
+    footer a {
+      color: var(--cream);
+    }
+
+    footer a:hover {
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 64px;
+    }
+
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .logo-dot {
+      flex-shrink: 0;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: var(--green);
+      clip-path: polygon(50% 0%, 85% 15%, 100% 50%, 85% 85%, 50% 100%, 15% 85%, 0% 50%, 15% 15%);
+      transition: clip-path 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  transform  0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .nav-logo:hover .logo-dot {
+      clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+      transform: rotate(15deg);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      color: var(--dark);
+    }
+
+    .nav-links a.active {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── BUTTON ──────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+
+    .btn:hover { background: var(--green-hover); color: #fff; text-decoration: none; }
+    .btn:active { background: var(--green-dark); color: #fff; transform: scale(0.97); text-decoration: none; }
+
+    /* ── ABOUT HERO ──────────────────────────────────── */
+    .about-hero {
+      display: flex;
+      gap: 56px;
+      padding: 64px 64px 80px;
+      align-items: flex-start;
+    }
+
+    .about-text {
+      flex: 0 0 clamp(400px, 48%, 560px);
+      max-width: clamp(400px, 48%, 560px);
+    }
+
+    .about-text h1 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 500;
+      line-height: 1.15;
+      margin-bottom: 28px;
+    }
+
+    .about-text p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── PHOTO COLLAGE ───────────────────────────────── */
+    .about-photos {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .about-photos img {
+      width: 100%;
+      height: auto;
+      max-width: 380px;
+      border-radius: 12px;
+      display: block;
+    }
+
+    /* ── PLACES SECTION ─────────────────────────────── */
+    .places-wrap {
+      padding: 0 64px 56px;
+    }
+
+    .places-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .places-list {
+      display: grid;
+      grid-template-columns: 110px 1fr 1fr 1fr;
+      column-gap: 0; /* gap via padding so border-top runs continuously */
+    }
+
+    .place-row { display: contents; }
+
+    .place-row > span {
+      padding: 20px 32px 20px 0; /* right padding creates column spacing */
+      border-top: 1px solid #e4e4e4;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+    }
+
+    .place-row > span:last-child { padding-right: 0; }
+
+    .place-year {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10.5px;
+      color: var(--muted);
+      letter-spacing: 0;
+    }
+
+    .place-role {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .place-company {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .place-location {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── CONNECT SECTION ─────────────────────────────── */
+    .connect-wrap {
+      padding: 0 64px 80px;
+    }
+
+    .connect {
+      background: #f2f3f1;
+      border-radius: 12px;
+      padding: 52px 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .connect h2 {
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .connect h2 em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .connect-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .connect-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      color: var(--dark);
+      text-decoration: none;
+    }
+
+    .connect-link:hover {
+      color: var(--green-hover);
+      text-decoration: none;
+    }
+
+    .connect-arrow {
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .connect-link:hover .connect-arrow {
+      transform: translateX(3px);
+    }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--footer-bg);
+      color: var(--cream);
+      padding: 56px 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .footer-brand .name {
+      font-size: 15px;
+      font-weight: 500;
+      color: #f0f8f0;
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .footer-col h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: #f0f8f0;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul a {
+      font-size: 14px;
+    }
+
+    /* ── CURSOR GLOW ─────────────────────────────────── */
+    #cursor-glow {
+      position: fixed;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(69, 100, 83, 0.2) 0%,
+        rgba(69, 100, 83, 0.07) 45%,
+        transparent 70%
+      );
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 9999;
+      top: -400px;
+      left: -400px;
+    }
+
+    @media (hover: none) { #cursor-glow { display: none; } }
+    @media (prefers-reduced-motion: reduce) { #cursor-glow { display: none; } }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      .about-hero {
+        flex-direction: column;
+        padding: 48px 40px 64px;
+      }
+
+      .about-text {
+        flex: none;
+        max-width: 100%;
+      }
+
+      .about-photos {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 720px) {
+      nav { padding: 16px 24px; }
+      .about-hero { padding: 32px 24px 48px; }
+      .about-text { flex: none; max-width: 100%; }
+      .about-photos { width: 100%; }
+      .about-photos img { max-width: 100%; }
+
+      .places-wrap { padding: 0 24px 48px; }
+      .places-list { grid-template-columns: 1fr; }
+      .place-row { display: flex; flex-direction: column; gap: 3px;
+                   padding: 16px 0; border-top: 1px solid #e4e4e4; }
+      .place-row > span { padding: 0; border-top: none; }
+      .place-year { font-size: 10px; margin-bottom: 2px; }
+      .place-role { font-size: 16px; }
+      .place-company { font-size: 14px; }
+      .place-location { font-size: 11px; }
+
+      .connect-wrap { padding: 0 24px 56px; }
+      .connect { grid-template-columns: 1fr; gap: 24px; padding: 36px 32px; }
+
+      footer { grid-template-columns: 1fr; padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <span class="logo-dot" aria-hidden="true"></span>Jane J Chen
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Work</a></li>
+      <li><a href="#">Play</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ABOUT HERO -->
+    <section class="about-hero">
+
+      <div class="about-text">
+        <h1>Hi, I'm Jane!</h1>
+        <p>I was born in Johannesburg, South Africa, raised in sunny Phoenix, Arizona, and am currently living in Brooklyn, New York. I'm a lifelong artist and lover of all things creative.</p>
+        <p>My childhood love of drawing and painting led me to a degree in Industrial Design, where I developed an interest in human factors, user interaction, and problem-solving. I've worked in multidisciplinary roles in visual, brand, and UI/UX design, across agencies, in-house teams, and various industries.</p>
+        <p>Outside of work, you can find me at a concert, baking sourdough, trying out a new recipe, or exploring new restaurants, and coffee shops, and events in the city.</p>
+      </div>
+
+      <div class="about-photos">
+        <img src="images/about-collage.png" alt="Photo collage: Jane in a garden, a Brooklyn street scene, and palm trees at sunset" />
+      </div>
+
+    </section>
+
+    <!-- A FEW PLACES -->
+    <div class="places-wrap">
+      <p class="places-label">A few places I've been</p>
+      <div class="places-list" role="list">
+
+        <div class="place-row" role="listitem">
+          <span class="place-year">2023–Present</span>
+          <span class="place-role">UI/UX Designer</span>
+          <span class="place-company">RTI International</span>
+          <span class="place-location">Remote, Brooklyn, NY</span>
+        </div>
+
+        <div class="place-row" role="listitem">
+          <span class="place-year">2022–23</span>
+          <span class="place-role">UI Designer</span>
+          <span class="place-company">Whispir</span>
+          <span class="place-location">Boulder, CO</span>
+        </div>
+
+        <div class="place-row" role="listitem">
+          <span class="place-year">2020–22</span>
+          <span class="place-role">Visual Designer</span>
+          <span class="place-company">StackCommerce</span>
+          <span class="place-location">Remote, Denver, CO</span>
+        </div>
+
+        <div class="place-row" role="listitem">
+          <span class="place-year">Earlier</span>
+          <span class="place-role">Visual + Brand Designer</span>
+          <span class="place-company">Various agencies &amp; in-house teams</span>
+          <span class="place-location">Phoenix, AZ</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- LET'S CONNECT -->
+    <div class="connect-wrap">
+      <section class="connect">
+        <h2>Let's <em>connect</em></h2>
+        <div class="connect-links">
+          <a href="mailto:hello@janejchen.com" class="connect-link">
+            hello@janejchen.com
+            <svg class="connect-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="https://linkedin.com/in/janejchen" target="_blank" rel="noopener" class="connect-link">
+            LinkedIn
+            <svg class="connect-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <span class="name">Jane J Chen</span>
+      <div class="footer-contact">
+        <a href="mailto:hello@janejchen.com">hello@janejchen.com</a>
+        <a href="https://linkedin.com/in/janejchen" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h3>Work</h3>
+      <ul>
+        <li><a href="#">College Scorecard</a></li>
+        <li><a href="#">College Scorecard Design System</a></li>
+        <li><a href="#">Launch</a></li>
+        <li><a href="#">Whispir for Impact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Play</h3>
+      <ul>
+        <li><a href="#">Film</a></li>
+        <li><a href="#">Digitals</a></li>
+        <li><a href="#">Illustrations</a></li>
+        <li><a href="#">Graphics</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const glow = document.getElementById('cursor-glow');
+      let x = -400, y = -400, tx = -400, ty = -400;
+
+      document.addEventListener('mousemove', function (e) {
+        tx = e.clientX;
+        ty = e.clientY;
+      });
+
+      function tick() {
+        x += (tx - x) * 0.1;
+        y += (ty - y) * 0.1;
+        glow.style.left = x + 'px';
+        glow.style.top  = y + 'px';
+        requestAnimationFrame(tick);
+      }
+      tick();
+    })();
+  </script>
+</body>
+</html>

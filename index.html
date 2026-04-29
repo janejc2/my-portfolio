@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jane J Chen — Visual + Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green:       #456453;
+      --green-hover: #4e7362; /* lighter; 5.3:1 on white — WCAG AA ✓ */
+      --green-dark:  #3a5547; /* darker, for btn active */
+      --dark:        #1c1c1c;
+      --muted:       #555;    /* 6.5:1 on white — WCAG AA ✓ */
+      --footer-bg:   #456453;
+      --cream:       #f5efe0; /* 5.15:1 on footer bg — WCAG AA ✓ */
+      --radius:      6px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: #fff;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* ── FOCUS ─────────────────────────────────────── */
+    :focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    footer :focus-visible {
+      outline-color: #fff;
+    }
+
+    /* ── LINKS — light background ───────────────────── */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--green-hover);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── LINKS — dark background (footer) ───────────── */
+    footer a {
+      color: var(--cream);
+    }
+
+    footer a:hover {
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 64px;
+    }
+
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    /* circle → 4-pointed sparkle on hover */
+    .logo-dot {
+      flex-shrink: 0;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: var(--green);
+      /* octagon approximating a circle — same 8 pts as the star so transition is smooth */
+      clip-path: polygon(50% 0%, 85% 15%, 100% 50%, 85% 85%, 50% 100%, 15% 85%, 0% 50%, 15% 15%);
+      transition: clip-path 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  transform  0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .nav-logo:hover .logo-dot {
+      /* tighter inner radius → sharp 4-pointed star */
+      clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+      transform: rotate(15deg);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      color: var(--dark);
+    }
+
+    .nav-links a.active {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
+      padding: 48px 64px 64px;
+    }
+
+    .hero-tags {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-tags span + span::before {
+      content: ' · ';
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 500;
+      line-height: 1.2;
+      /* ~2/3 of viewport at desktop, bounded between 480px and 960px */
+      max-width: clamp(480px, 66vw, 960px);
+      margin-bottom: 36px;
+    }
+
+    .hero h1 .accent {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    /* ── BUTTON ──────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease, transform 0.1s ease;
+      /* 5.87:1 on white bg — WCAG AA ✓ */
+    }
+
+    .btn-arrow {
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover .btn-arrow {
+      transform: translateY(4px);
+    }
+
+    .btn:hover {
+      background: var(--green-hover);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .btn:active {
+      background: var(--green-dark);
+      color: #fff;
+      transform: scale(0.97);
+      text-decoration: none;
+    }
+
+    /* two-ring focus so it reads on the green button */
+    .btn:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+      box-shadow: 0 0 0 5px var(--green);
+    }
+
+    /* ── WORK GRID ───────────────────────────────────── */
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 24px;
+      padding: 16px 64px 80px;
+    }
+
+    /* image / placeholder container */
+    .card-media {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+    }
+
+    /* white-wash overlay */
+    .card-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .card-media img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    /* zoom + wash — only animate if the user hasn't asked for reduced motion */
+    @media (prefers-reduced-motion: no-preference) {
+      .card-media img {
+        transition: transform 0.35s ease;
+      }
+      .card-media::after {
+        transition: background 0.35s ease;
+      }
+    }
+
+    /* trigger on card hover OR keyboard focus-within (accessible) */
+    .work-card:hover .card-media img,
+    .work-card:focus-within .card-media img {
+      transform: scale(1.05);
+    }
+
+    .work-card:hover .card-media::after,
+    .work-card:focus-within .card-media::after {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .work-card h2 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .work-card h2 a {
+      color: var(--dark);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .work-card .tags {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .work-card .tags span + span::before {
+      content: ' · ';
+    }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--footer-bg);
+      color: var(--cream);
+      padding: 56px 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .footer-brand .name {
+      font-size: 15px;
+      font-weight: 500;
+      color: #f0f8f0; /* 5.5:1 on footer bg — WCAG AA ✓ */
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .footer-col h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: #f0f8f0;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul a {
+      font-size: 14px;
+    }
+
+    /* ── CURSOR GLOW ─────────────────────────────────── */
+    #cursor-glow {
+      position: fixed;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(69, 100, 83, 0.2) 0%,
+        rgba(69, 100, 83, 0.07) 45%,
+        transparent 70%
+      );
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 9999;
+      top: -400px;
+      left: -400px;
+    }
+
+    /* hide on touch screens and for reduced-motion users */
+    @media (hover: none) { #cursor-glow { display: none; } }
+    @media (prefers-reduced-motion: reduce) { #cursor-glow { display: none; } }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 720px) {
+      nav  { padding: 16px 24px; }
+      .hero { padding: 32px 24px 48px; }
+      .hero h1 { max-width: 100%; }
+      .work-grid { grid-template-columns: 1fr; padding: 0 24px 64px; }
+      footer { grid-template-columns: 1fr; padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <span class="logo-dot" aria-hidden="true"></span>Jane J Chen
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Work</a></li>
+      <li><a href="#">Play</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-tags">
+      <span>Product Design</span>
+      <span>UX Research</span>
+      <span>Design Systems</span>
+      <span>Visual Design</span>
+    </p>
+    <h1>Hey there! I'm Jane, a <span class="accent">visual + product designer</span> based in Brooklyn, New York.</h1>
+    <a href="#work" class="btn" id="see-work-btn">
+      See my work
+      <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M8 2v12M4 10l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- WORK GRID -->
+  <section class="work-grid" id="work">
+
+    <div class="work-card card-1">
+      <div class="card-media">
+        <img src="images/college-scorecard.jpg" alt="College Scorecard Redesign — redesigned search and compare interface for the U.S. Department of Education" />
+      </div>
+      <h2><a href="#">College Scorecard Redesign</a></h2>
+      <p class="tags">
+        <span>UX/UI Design</span>
+        <span>User Research</span>
+        <span>Web Design</span>
+      </p>
+    </div>
+
+    <div class="work-card card-2">
+      <div class="card-media">
+        <img src="images/college-scorecard-ds.jpg" alt="College Scorecard Design System — UI component library including buttons, checkboxes, and pagination" />
+      </div>
+      <h2><a href="#">College Scorecard Design System</a></h2>
+      <p class="tags">
+        <span>UX/UI Design</span>
+        <span>Design Systems</span>
+      </p>
+    </div>
+
+    <div class="work-card card-3">
+      <div class="card-media">
+        <img src="images/launch.jpg" alt="Launch — brand identity and UX design for an educational app" />
+      </div>
+      <h2><a href="#">Launch</a></h2>
+      <p class="tags">
+        <span>UX/UI Design</span>
+        <span>Branding</span>
+        <span>Visual Design</span>
+      </p>
+    </div>
+
+    <div class="work-card card-4">
+      <div class="card-media">
+        <img src="images/whispir.jpg" alt="Whispir for Impact — social responsibility website design for nonprofit communications" />
+      </div>
+      <h2><a href="#">Whispir for Impact</a></h2>
+      <p class="tags">
+        <span>UX/UI Design</span>
+        <span>Visual Design</span>
+      </p>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <span class="name">Jane J Chen</span>
+      <div class="footer-contact">
+        <a href="mailto:hello@janejchen.com">hello@janejchen.com</a>
+        <a href="https://linkedin.com/in/janejchen" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h3>Work</h3>
+      <ul>
+        <li><a href="#">College Scorecard</a></li>
+        <li><a href="#">College Scorecard Design System</a></li>
+        <li><a href="#">Launch</a></li>
+        <li><a href="#">Whispir for Impact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Play</h3>
+      <ul>
+        <li><a href="#">Film</a></li>
+        <li><a href="#">Digitals</a></li>
+        <li><a href="#">Illustrations</a></li>
+        <li><a href="#">Graphics</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    /* smooth scroll — respects prefers-reduced-motion */
+    (function () {
+      const btn = document.getElementById('see-work-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.getElementById('work');
+        if (!target) return;
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const glow = document.getElementById('cursor-glow');
+      let x = -400, y = -400, tx = -400, ty = -400;
+
+      document.addEventListener('mousemove', function (e) {
+        tx = e.clientX;
+        ty = e.clientY;
+      });
+
+      function tick() {
+        x += (tx - x) * 0.1;
+        y += (ty - y) * 0.1;
+        glow.style.left = x + 'px';
+        glow.style.top  = y + 'px';
+        requestAnimationFrame(tick);
+      }
+      tick();
+    })();
+  </script>
+</body>
+</html>
