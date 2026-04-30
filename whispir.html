@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.png" type="image/png" />
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -134,6 +135,9 @@
 
     .btn:hover { background: var(--green-hover); color: #fff; text-decoration: none; }
     .btn:active { background: var(--green-dark); color: #fff; transform: scale(0.97); text-decoration: none; }
+
+    .btn-arrow { transition: transform 0.2s ease; }
+    .btn:hover .btn-arrow { transform: translate(3px, -3px); }
 
     /* ═══════════════════════════════════════════════════
        CASE STUDY TEMPLATE STYLES
@@ -293,7 +297,7 @@
       color: var(--cream);
       padding: 56px 100px;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 32px;
       margin-top: 80px;
     }
@@ -382,7 +386,6 @@
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Work</a></li>
-      <li><a href="#">Play</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
@@ -412,7 +415,12 @@
         <p>Whispir is an Australia-based SaaS company, offering a cloud-based communications platform. Whispir for Impact exists to focus support into nonprofit organizations. I was tasked with redesigning this page to improve engagement and showcase the stories of organizations that Whispir works with.</p>
       </div>
 
-      <a href="https://www.whispir.com/en-us/whispir-for-impact/" target="_blank" rel="noopener" class="btn">View the Live Site</a>
+      <a href="https://www.whispir.com/en-us/whispir-for-impact/" target="_blank" rel="noopener" class="btn">
+        View the Live Site
+        <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </header>
     <!-- ═══════════════════════════════════════════════ -->
 
@@ -507,19 +515,8 @@
       <h3>Work</h3>
       <ul>
         <li><a href="college-scorecard.html">College Scorecard</a></li>
-        <li><a href="#">College Scorecard Design System</a></li>
         <li><a href="launch.html">Launch</a></li>
         <li><a href="whispir.html">Whispir for Impact</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h3>Play</h3>
-      <ul>
-        <li><a href="#">Film</a></li>
-        <li><a href="#">Digitals</a></li>
-        <li><a href="#">Illustrations</a></li>
-        <li><a href="#">Graphics</a></li>
       </ul>
     </div>
   </footer>

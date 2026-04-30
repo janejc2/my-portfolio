@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.png" type="image/png" />
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -121,6 +122,9 @@
     .btn:hover { background: var(--green-hover); color: #fff; text-decoration: none; }
     .btn:active { background: var(--green-dark); color: #fff; transform: scale(0.97); text-decoration: none; }
 
+    .btn-arrow { transition: transform 0.2s ease; }
+    .btn:hover .btn-arrow { transform: translate(3px, -3px); }
+
     /* ═══════════════════════════════════════════════════
        CASE STUDY TEMPLATE STYLES
     ═══════════════════════════════════════════════════ */
@@ -229,7 +233,7 @@
     }
 
     .process-number {
-      font-size: clamp(56px, 6vw, 80px);
+      font-size: clamp(32px, 4vw, 48px);
       font-weight: 400;
       line-height: 1;
       color: var(--green);
@@ -245,6 +249,19 @@
     .process-label.underlined {
       text-decoration: underline;
       text-underline-offset: 3px;
+    }
+
+    /* ── GRAY SECTION VARIANT ────────────────────────── */
+    .case-section-gray {
+      background: #f2f3f1;
+      padding-bottom: 64px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    /* consecutive gray sections collapse the gap between them */
+    .case-section-gray + .case-section-gray {
+      margin-top: 0;
     }
 
     /* ── GENERIC CASE SECTION ────────────────────────── */
@@ -282,14 +299,32 @@
       margin-bottom: 20px;
     }
 
-    .case-section img { width: 100%; display: block; border-radius: var(--radius); }
+    .case-section img { width: 100%; display: block; border-radius: var(--radius); margin-top: 20px; margin-bottom: 20px; }
+
+    /* zero out auto-margins for images inside layout containers that use gap */
+    .stack img, .grid-2x2 img, .grid-3 img, .pair img,
+    .insight-row img, .recs-grid img { margin-top: 0; margin-bottom: 0; }
+
+    /* demographics charts — constrain height */
+    .demographics-pair img { max-height: 200px; object-fit: contain; width: auto; }
+
+    /* ── OUTCOME SUB-HEADINGS ────────────────────────── */
+    .case-sub4 {
+      font-size: clamp(16px, 1.6vw, 20px);
+      font-weight: 500;
+      margin-bottom: 12px;
+      margin-top: 32px;
+    }
+
+    .case-sub4:first-child { margin-top: 0; }
 
     /* ── CALLOUT BOX ─────────────────────────────────── */
     .callout {
       background: #f2f3f1;
       border-radius: 10px;
       padding: 32px 40px;
-      margin-bottom: 40px;
+      margin-top: 40px;
+      margin-bottom: 48px;
     }
 
     .callout h4 {
@@ -387,9 +422,17 @@
 
     .insight-row:last-child { margin-bottom: 0; }
 
+    /* cap the flowchart image (insight 04) so it doesn't over-scale */
+    .insight-row:last-child img:first-child {
+      max-height: 420px;
+      object-fit: contain;
+      width: auto;
+    }
+
     .insight-label {
       font-size: 13px;
-      color: var(--muted);
+      color: var(--green);
+      font-weight: 500;
       margin-bottom: 10px;
     }
 
@@ -398,6 +441,7 @@
       font-weight: 400;
       line-height: 1.25;
       margin-bottom: 16px;
+      color: var(--dark);
     }
 
     /* ── RECOMMENDATIONS GRID ────────────────────────── */
@@ -409,7 +453,7 @@
     }
 
     .rec-number {
-      font-size: clamp(56px, 6vw, 80px);
+      font-size: clamp(32px, 4vw, 48px);
       font-weight: 400;
       color: var(--green);
       line-height: 1;
@@ -464,7 +508,7 @@
       color: var(--cream);
       padding: 56px 100px;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 32px;
       margin-top: 80px;
     }
@@ -531,7 +575,6 @@
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Work</a></li>
-      <li><a href="#">Play</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
@@ -557,7 +600,12 @@
         <p>College Scorecard is a U.S. Department of Education tool for students, parents, and counselors to compare the cost and value of higher education institutions.</p>
       </div>
 
-      <a href="https://collegescorecard.ed.gov/" target="_blank" rel="noopener" class="btn">View the Live Site</a>
+      <a href="https://collegescorecard.ed.gov/" target="_blank" rel="noopener" class="btn">
+        View the Live Site
+        <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </header>
 
     <!-- ── HERO IMAGE ─────────────────────────────────── -->
@@ -647,13 +695,13 @@
       </div>
 
       <div class="case-subsection">
-        <h3 class="case-subheading">Methodology</h3>
+        <h4 class="case-sub4">Methodology</h4>
         <p class="case-section-body">We conducted sessions virtually on Zoom and they lasted approximately an hour. To comply with the Paperwork Reduction Act, research was conducted through direct observation. Participants were asked to interact with the website as if they had landed there on their own.</p>
       </div>
 
       <div class="case-subsection">
-        <h3 class="case-subheading">Participant Demographics</h3>
-        <div class="pair">
+        <h4 class="case-sub4">Participant Demographics</h4>
+        <div class="pair demographics-pair">
           <img src="images/cs-demographics-gender.png" alt="Participant demographics by gender — Female 50%, Male 45%, Non-binary 5%" />
           <img src="images/cs-demographics-grade.png" alt="Participant demographics by grade — Senior 67%, Junior 22%, Sophomore 11%" />
         </div>
@@ -661,7 +709,7 @@
     </section>
 
     <!-- ── ACTIONABLE INSIGHTS ───────────────────────── -->
-    <section class="case-section" aria-labelledby="insights-heading">
+    <section class="case-section case-section-gray" aria-labelledby="insights-heading">
       <h2 id="insights-heading">Actionable Insights</h2>
 
       <!-- Insight 01: text left, image right -->
@@ -738,13 +786,13 @@
     </section>
 
     <!-- ── HOMEPAGE REDESIGN (Section 02) ─────────────── -->
-    <section class="case-section" aria-labelledby="homepage-redesign-heading">
+    <section class="case-section case-section-gray" aria-labelledby="homepage-redesign-heading">
       <h2 id="homepage-redesign-heading">Homepage Redesign</h2>
       <p class="case-section-body">I compiled analytics showing high bounce rates and findings from user research sessions with students that didn't know where to start when using the site, or found the existing homepage to look outdated.</p>
       <p class="case-section-body">I presented this as a business problem, not just a design preference. I framed the homepage as a foundation that would make all the other features more discoverable and effective. The client agreed to tackle the home page as the first phase.</p>
 
       <div class="case-subsection">
-        <h3 class="case-subheading">Design Decisions</h3>
+        <h4 class="case-sub4">Design Decisions</h4>
         <ul class="body-list">
           <li>Moved external links below the fold despite partner concerns</li>
           <li>Quick-search buttons for exploratory users (added dev complexity but addressed critical user need)</li>
@@ -778,7 +826,7 @@
       </div>
 
       <div class="case-subsection">
-        <h3 class="case-subheading">Quick Search</h3>
+        <h4 class="case-sub4">Quick Search</h4>
         <p class="case-section-body">I continued explorations for the updated search bar by adding "quick search" buttons for these filters on the main home page so they were visible immediately. I also experimented with updating the colors of the page, drawing more attention to the search bar by removing the white box around it.</p>
         <div class="grid-2x2">
           <img src="images/cs-quick-search-1.png" alt="College Scorecard search bar exploration — iteration 1 with white search box" />
@@ -789,7 +837,7 @@
       </div>
 
       <div class="case-subsection">
-        <h3 class="case-subheading">Compare Feature Callout</h3>
+        <h4 class="case-sub4">Compare Feature Callout</h4>
         <p class="case-section-body">The compare function explanation went through iterations. Early versions used more technical language ("Add schools to comparison tray"), but testing showed high school students responded better to conversational language:</p>
         <img src="images/cs-compare-callout.png" alt="Redesigned homepage section 'See how colleges compare' — navy background with sample college comparison cards showing graduation rate, annual cost, and median earnings" />
         <p class="case-section-body" style="margin-top: 32px;">Additional homepage content added visuals of the site, improved SEO, and helped users understand site features. It also had the added benefit of pushing the external links further down the page, decreasing the number of users that immediately clicked out of the site.</p>
@@ -835,13 +883,13 @@
       <h2 id="testing-heading">Testing and Iteration</h2>
 
       <div class="case-subsection">
-        <h3 class="case-subheading">Validation Testing Approach</h3>
+        <h4 class="case-sub4">Validation Testing Approach</h4>
         <p class="case-section-body">After client approval, I conducted additional validation testing with five high school students, comparing the original homepage with high-fidelity prototypes of the redesign.</p>
         <p class="case-section-body">Sessions structure: 30-minute remote sessions via Zoom where students completed realistic tasks on both versions, thinking aloud throughout.</p>
       </div>
 
       <div class="case-subsection">
-        <h3 class="case-subheading">Key Findings</h3>
+        <h4 class="case-sub4">Key Findings</h4>
         <p class="case-section-body">Participants had overall positive reactions to the redesigned College Scorecard homepage and preferred the redesigned option over the existing version of the homepage. I observed and documented:</p>
         <p class="findings-label">What Worked:</p>
         <ul class="body-list">
@@ -858,7 +906,7 @@
       </div>
 
       <div class="case-subsection">
-        <h3 class="case-subheading">Final Refinements</h3>
+        <h4 class="case-sub4">Final Refinements</h4>
         <p class="case-section-body">Based on validation findings, I made targeted refinements:</p>
         <ul class="body-list">
           <li>Removed "Most People Get In" button, adding option to reintroduce alternative buttons based on post-launch analytics</li>
@@ -868,7 +916,7 @@
     </section>
 
     <!-- ── LAUNCH ──────────────────────────────────────── -->
-    <section class="case-section" aria-labelledby="launch-heading">
+    <section class="case-section case-section-gray" aria-labelledby="launch-heading">
       <h2 id="launch-heading">Launch</h2>
       <p class="case-section-body">The redesigned homepage was launched in January 2025.</p>
       <div class="case-subsection">
@@ -877,11 +925,11 @@
     </section>
 
     <!-- ── OUTCOME & IMPACT ───────────────────────────── -->
-    <section class="case-section" aria-labelledby="outcome-heading">
+    <section class="case-section case-section-gray" aria-labelledby="outcome-heading">
       <h2 id="outcome-heading">Outcome &amp; Impact</h2>
 
       <div class="case-subsection">
-        <h3 class="case-subheading">User Experience Improvements</h3>
+        <h4 class="case-sub4">User Experience Improvements</h4>
         <table class="table-metrics">
           <thead>
             <tr>
@@ -921,7 +969,7 @@
       </div>
 
       <div class="case-subsection">
-        <h3 class="case-subheading">Business Impact</h3>
+        <h4 class="case-sub4">Business Impact</h4>
         <ul class="body-list">
           <li>Decreased support tickets in first 90 days after launch</li>
           <li>Influenced budget allocation for continued UX improvements</li>
@@ -929,7 +977,7 @@
       </div>
 
       <div class="case-subsection">
-        <h3 class="case-subheading">Organizational Impact</h3>
+        <h4 class="case-sub4">Organizational Impact</h4>
         <ul class="body-list">
           <li>Established user research protocols across internal team</li>
           <li>Migrated design project from Adobe XD to Figma</li>
@@ -954,7 +1002,7 @@
 
     <!-- ── WHAT I'D DO DIFFERENTLY ────────────────────── -->
     <section class="case-section" aria-labelledby="differently-heading">
-      <h2 id="differently-heading">What I'd Do Differently</h2>
+      <h3 class="case-subheading" id="differently-heading">What I'd Do Differently</h3>
 
       <div class="learning-item">
         <p class="learning-title">Earlier Stakeholder Alignment on Success Metrics</p>
@@ -969,7 +1017,7 @@
 
     <!-- ── REFLECTION ─────────────────────────────────── -->
     <section class="case-section" aria-labelledby="reflection-heading" style="padding-bottom: 80px;">
-      <h2 id="reflection-heading">Reflection</h2>
+      <h3 class="case-subheading" id="reflection-heading">Reflection</h3>
 
       <div class="learning-item">
         <p class="learning-title">How This Project Changed My Approach</p>
@@ -994,19 +1042,8 @@
       <h3>Work</h3>
       <ul>
         <li><a href="college-scorecard.html">College Scorecard</a></li>
-        <li><a href="#">College Scorecard Design System</a></li>
         <li><a href="launch.html">Launch</a></li>
         <li><a href="whispir.html">Whispir for Impact</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h3>Play</h3>
-      <ul>
-        <li><a href="#">Film</a></li>
-        <li><a href="#">Digitals</a></li>
-        <li><a href="#">Illustrations</a></li>
-        <li><a href="#">Graphics</a></li>
       </ul>
     </div>
   </footer>
