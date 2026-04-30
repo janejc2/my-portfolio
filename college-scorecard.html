@@ -252,6 +252,12 @@
       text-underline-offset: 3px;
     }
 
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    .case-section-compact { padding-top: 32px; padding-bottom: 32px; }
+
     .process-link {
       color: inherit;
       text-decoration: underline;
@@ -528,7 +534,7 @@
       color: var(--cream);
       padding: 56px 100px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 32px;
       margin-top: 80px;
     }
@@ -1006,7 +1012,7 @@
     </section>
 
     <!-- ── KEY LEARNINGS ──────────────────────────────── -->
-    <section class="case-section" aria-labelledby="learnings-heading">
+    <section class="case-section case-section-compact" aria-labelledby="learnings-heading">
       <h2 id="learnings-heading">Key Learnings</h2>
 
       <div class="learning-item">
@@ -1021,7 +1027,7 @@
     </section>
 
     <!-- ── WHAT I'D DO DIFFERENTLY ────────────────────── -->
-    <section class="case-section" aria-labelledby="differently-heading">
+    <section class="case-section case-section-compact" aria-labelledby="differently-heading">
       <h3 class="case-subheading" id="differently-heading">What I'd Do Differently</h3>
 
       <div class="learning-item">
@@ -1036,7 +1042,7 @@
     </section>
 
     <!-- ── REFLECTION ─────────────────────────────────── -->
-    <section class="case-section" aria-labelledby="reflection-heading" style="padding-bottom: 80px;">
+    <section class="case-section case-section-compact" aria-labelledby="reflection-heading" style="padding-bottom: 64px;">
       <h3 class="case-subheading" id="reflection-heading">Reflection</h3>
 
       <div class="learning-item">
@@ -1064,6 +1070,13 @@
         <li><a href="college-scorecard.html">College Scorecard</a></li>
         <li><a href="launch.html">Launch</a></li>
         <li><a href="whispir.html">Whispir for Impact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>About</h3>
+      <ul>
+        <li><a href="about.html">About Me</a></li>
       </ul>
     </div>
   </footer>
