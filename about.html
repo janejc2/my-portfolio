@@ -95,13 +95,17 @@
       width: 10px;
       height: 10px;
       background: var(--green);
-      clip-path: polygon(50% 0%, 85% 15%, 100% 50%, 85% 85%, 50% 100%, 15% 85%, 0% 50%, 15% 15%);
+      clip-path: polygon(50% 0%, 69.1% 3.8%, 85.4% 14.6%, 96.2% 30.9%, 100% 50%, 96.2% 69.1%, 85.4% 85.4%, 69.1% 96.2%, 50% 100%, 30.9% 96.2%, 14.6% 85.4%, 3.8% 69.1%, 0% 50%, 3.8% 30.9%, 14.6% 14.6%, 30.9% 3.8%);
       transition: clip-path 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
                   transform  0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
+    .nav-logo:hover {
+      text-decoration: none;
+    }
+
     .nav-logo:hover .logo-dot {
-      clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+      clip-path: polygon(50% 0%, 59.6% 26.9%, 67.7% 32.3%, 73.1% 40.4%, 100% 50%, 73.1% 59.6%, 67.7% 67.7%, 59.6% 73.1%, 50% 100%, 40.4% 73.1%, 32.3% 67.7%, 26.9% 59.6%, 0% 50%, 26.9% 40.4%, 32.3% 32.3%, 40.4% 26.9%);
       transform: rotate(15deg);
     }
 
@@ -148,8 +152,8 @@
     }
 
     .about-text {
-      flex: 0 0 clamp(400px, 48%, 560px);
-      max-width: clamp(400px, 48%, 560px);
+      flex: 0 0 clamp(400px, 44vw, 720px);
+      max-width: clamp(400px, 44vw, 720px);
     }
 
     .about-text h1 {
@@ -180,7 +184,6 @@
     .about-photos img {
       width: 100%;
       height: auto;
-      max-width: 380px;
       border-radius: 12px;
       display: block;
     }
@@ -411,7 +414,7 @@
   <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-logo">
-      <span class="logo-dot" aria-hidden="true"></span>Jane J Chen
+      Jane J Chen<span class="logo-dot" aria-hidden="true"></span>
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Work</a></li>
@@ -512,7 +515,7 @@
       <ul>
         <li><a href="#">College Scorecard</a></li>
         <li><a href="#">College Scorecard Design System</a></li>
-        <li><a href="#">Launch</a></li>
+        <li><a href="launch.html">Launch</a></li>
         <li><a href="#">Whispir for Impact</a></li>
       </ul>
     </div>

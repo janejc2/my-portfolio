@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Style Guide — Jane J Chen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green:       #456453;
+      --green-hover: #4e7362;
+      --green-dark:  #3a5547;
+      --dark:        #1c1c1c;
+      --muted:       #555;
+      --footer-bg:   #456453;
+      --cream:       #f5efe0;
+      --radius:      6px;
+      --border:      #e4e4e4;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: #fff;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--green-hover);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 64px;
+    }
+
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .logo-dot {
+      flex-shrink: 0;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: var(--green);
+      clip-path: polygon(50% 0%, 69.1% 3.8%, 85.4% 14.6%, 96.2% 30.9%, 100% 50%, 96.2% 69.1%, 85.4% 85.4%, 69.1% 96.2%, 50% 100%, 30.9% 96.2%, 14.6% 85.4%, 3.8% 69.1%, 0% 50%, 3.8% 30.9%, 14.6% 14.6%, 30.9% 3.8%);
+      transition: clip-path 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  transform  0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .nav-logo:hover {
+      text-decoration: none;
+    }
+
+    .nav-logo:hover .logo-dot {
+      clip-path: polygon(50% 0%, 59.6% 26.9%, 67.7% 32.3%, 73.1% 40.4%, 100% 50%, 73.1% 59.6%, 67.7% 67.7%, 59.6% 73.1%, 50% 100%, 40.4% 73.1%, 32.3% 67.7%, 26.9% 59.6%, 0% 50%, 26.9% 40.4%, 32.3% 32.3%, 40.4% 26.9%);
+      transform: rotate(15deg);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      color: var(--dark);
+    }
+
+    .nav-links a.active {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── GUIDE LAYOUT ────────────────────────────────── */
+    .guide-wrap {
+      padding: 48px 64px 96px;
+      max-width: 1100px;
+    }
+
+    .guide-page-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 56px;
+    }
+
+    .guide-section {
+      margin-bottom: 72px;
+    }
+
+    .guide-section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    /* ── TYPE SCALE ─────────────────────────────────── */
+    .type-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      column-gap: 0;
+      align-items: baseline;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .type-meta {
+      padding-right: 32px;
+    }
+
+    .type-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .type-spec {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* sample text styles */
+    .sample-hero-h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .sample-about-h1 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .sample-connect-h2 {
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .sample-card-h2 {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .sample-role {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .sample-body-large {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--dark);
+    }
+
+    .sample-body {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--dark);
+    }
+
+    .sample-company {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .sample-nav {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .sample-label {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .sample-tags {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .sample-location {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .sample-mono {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10.5px;
+      color: var(--muted);
+    }
+
+    .sample-overline {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .accent { color: var(--green); font-weight: 600; }
+
+    /* ── FONTS ──────────────────────────────────────── */
+    .font-row {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      column-gap: 0;
+      align-items: start;
+    }
+
+    .font-meta {
+      padding-right: 32px;
+    }
+
+    .font-name {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .font-use {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .font-weights {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .weight-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .weight-label {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10px;
+      color: var(--muted);
+      min-width: 100px;
+    }
+
+    .weight-sample {
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    /* ── COLORS ─────────────────────────────────────── */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .swatch-block {
+      height: 72px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .swatch-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .swatch-hex {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .swatch-use {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--footer-bg);
+      color: var(--cream);
+      padding: 56px 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .footer-brand .name {
+      font-size: 15px;
+      font-weight: 500;
+      color: #f0f8f0;
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    footer a { color: var(--cream); }
+    footer a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+    .footer-col h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: #f0f8f0;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul a { font-size: 14px; }
+
+    /* ── CURSOR GLOW ─────────────────────────────────── */
+    #cursor-glow {
+      position: fixed;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(69, 100, 83, 0.2) 0%,
+        rgba(69, 100, 83, 0.07) 45%,
+        transparent 70%
+      );
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 9999;
+      top: -400px;
+      left: -400px;
+    }
+
+    @media (hover: none) { #cursor-glow { display: none; } }
+    @media (prefers-reduced-motion: reduce) { #cursor-glow { display: none; } }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 720px) {
+      nav { padding: 16px 24px; }
+      .guide-wrap { padding: 32px 24px 64px; }
+      .type-row { grid-template-columns: 1fr; gap: 16px; }
+      .font-row { grid-template-columns: 1fr; gap: 16px; }
+      footer { grid-template-columns: 1fr; padding: 40px 24px; }
+      .color-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      Jane J Chen<span class="logo-dot" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Work</a></li>
+      <li><a href="#">Play</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="guide-wrap">
+
+    <p class="guide-page-title">Style Guide</p>
+
+    <!-- TYPE SCALE -->
+    <section class="guide-section">
+      <p class="guide-section-label">Type Scale</p>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Hero Heading</span>
+          <span class="type-spec">Inter 500<br>clamp(36px, 5vw, 56px)<br>line-height 1.2<br>Used on: Home page hero</span>
+        </div>
+        <div class="sample-hero-h1">Hey there!</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Page Heading</span>
+          <span class="type-spec">Inter 500<br>clamp(32px, 4vw, 48px)<br>line-height 1.15<br>Used on: About page</span>
+        </div>
+        <div class="sample-about-h1">Hi, I'm Jane!</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Section Heading</span>
+          <span class="type-spec">Inter 500 / 400 italic<br>clamp(26px, 3vw, 38px)<br>line-height 1.2<br>Used on: Connect section</span>
+        </div>
+        <div class="sample-connect-h2">Let's <em>connect</em></div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Card Title</span>
+          <span class="type-spec">Inter 500<br>20px<br>Used on: Work grid cards</span>
+        </div>
+        <div class="sample-card-h2">College Scorecard Redesign</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Role / Emphasis</span>
+          <span class="type-spec">Inter 600<br>18px<br>Used on: Employment table</span>
+        </div>
+        <div class="sample-role">UI/UX Designer</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Body Large</span>
+          <span class="type-spec">Inter 500<br>16px<br>Used on: Connect links, company names</span>
+        </div>
+        <div class="sample-company">RTI International</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Body</span>
+          <span class="type-spec">Inter 400<br>15px<br>line-height 1.7<br>Used on: About bio, nav, buttons</span>
+        </div>
+        <div class="sample-body">I was born in Johannesburg, South Africa, raised in sunny Phoenix, Arizona, and am currently living in Brooklyn, New York. I'm a lifelong artist and lover of all things creative.</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Label / Footer Heading</span>
+          <span class="type-spec">Inter 500<br>14px<br>Used on: Footer column headings</span>
+        </div>
+        <div class="sample-label">Work</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Tags / Caption</span>
+          <span class="type-spec">Inter 400<br>13px<br>color: --muted (#555)<br>Used on: Card tags</span>
+        </div>
+        <div class="sample-tags">UX/UI Design · User Research · Web Design</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Location</span>
+          <span class="type-spec">Inter 400<br>12px<br>color: --muted (#555)<br>Used on: Employment table</span>
+        </div>
+        <div class="sample-location">Remote, Brooklyn, NY</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Overline</span>
+          <span class="type-spec">Inter 600<br>11px / uppercase<br>letter-spacing: 0.1em<br>Used on: Section labels</span>
+        </div>
+        <div class="sample-overline">A few places I've been</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <span class="type-name">Mono Year</span>
+          <span class="type-spec">JetBrains Mono 400<br>10.5px<br>color: --muted (#555)<br>Used on: Employment table</span>
+        </div>
+        <div class="sample-mono">2023–Present</div>
+      </div>
+
+    </section>
+
+    <!-- FONTS -->
+    <section class="guide-section">
+      <p class="guide-section-label">Fonts</p>
+
+      <div class="font-row">
+        <div class="font-meta">
+          <p class="font-name">Inter</p>
+          <p class="font-use">Primary typeface — all headings, body text, UI elements</p>
+        </div>
+        <div class="font-weights">
+          <div class="weight-row">
+            <span class="weight-label">400 Regular</span>
+            <span class="weight-sample" style="font-weight:400;">The quick brown fox</span>
+          </div>
+          <div class="weight-row">
+            <span class="weight-label">400 Italic</span>
+            <span class="weight-sample" style="font-weight:400; font-style:italic;">The quick brown fox</span>
+          </div>
+          <div class="weight-row">
+            <span class="weight-label">500 Medium</span>
+            <span class="weight-sample" style="font-weight:500;">The quick brown fox</span>
+          </div>
+          <div class="weight-row">
+            <span class="weight-label">600 SemiBold</span>
+            <span class="weight-sample" style="font-weight:600;">The quick brown fox</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-row">
+        <div class="font-meta">
+          <p class="font-name">JetBrains Mono</p>
+          <p class="font-use">Monospace accent — year labels in employment table</p>
+        </div>
+        <div class="font-weights">
+          <div class="weight-row">
+            <span class="weight-label">400 Regular</span>
+            <span class="weight-sample" style="font-family:'JetBrains Mono', ui-monospace, monospace; font-weight:400; font-size:18px;">2023–Present</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- COLORS -->
+    <section class="guide-section">
+      <p class="guide-section-label">Colors</p>
+
+      <div class="color-grid">
+
+        <div class="swatch">
+          <div class="swatch-block" style="background:#456453;"></div>
+          <span class="swatch-name">Green</span>
+          <span class="swatch-hex">#456453</span>
+          <span class="swatch-use">Primary — buttons, nav active, accents, footer bg</span>
+        </div>
+
+        <div class="swatch">
+          <div class="swatch-block" style="background:#4e7362;"></div>
+          <span class="swatch-name">Green Hover</span>
+          <span class="swatch-hex">#4e7362</span>
+          <span class="swatch-use">Button/link hover state — 5.3:1 contrast on white ✓</span>
+        </div>
+
+        <div class="swatch">
+          <div class="swatch-block" style="background:#3a5547;"></div>
+          <span class="swatch-name">Green Dark</span>
+          <span class="swatch-hex">#3a5547</span>
+          <span class="swatch-use">Button active/pressed state</span>
+        </div>
+
+        <div class="swatch">
+          <div class="swatch-block" style="background:#1c1c1c;"></div>
+          <span class="swatch-name">Dark</span>
+          <span class="swatch-hex">#1c1c1c</span>
+          <span class="swatch-use">Primary text color</span>
+        </div>
+
+        <div class="swatch">
+          <div class="swatch-block" style="background:#555;"></div>
+          <span class="swatch-name">Muted</span>
+          <span class="swatch-hex">#555555</span>
+          <span class="swatch-use">Secondary text — tags, labels, captions — 6.5:1 on white ✓</span>
+        </div>
+
+        <div class="swatch">
+          <div class="swatch-block" style="background:#f5efe0;"></div>
+          <span class="swatch-name">Cream</span>
+          <span class="swatch-hex">#f5efe0</span>
+          <span class="swatch-use">Footer text — 5.15:1 on footer bg ✓</span>
+        </div>
+
+        <div class="swatch">
+          <div class="swatch-block" style="background:#f2f3f1;"></div>
+          <span class="swatch-name">Surface</span>
+          <span class="swatch-hex">#f2f3f1</span>
+          <span class="swatch-use">Connect section card background</span>
+        </div>
+
+        <div class="swatch">
+          <div class="swatch-block" style="background:#e4e4e4;"></div>
+          <span class="swatch-name">Border</span>
+          <span class="swatch-hex">#e4e4e4</span>
+          <span class="swatch-use">Divider lines — employment table rows</span>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <span class="name">Jane J Chen</span>
+      <div class="footer-contact">
+        <a href="mailto:hello@janejchen.com">hello@janejchen.com</a>
+        <a href="https://linkedin.com/in/janejchen" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h3>Work</h3>
+      <ul>
+        <li><a href="#">College Scorecard</a></li>
+        <li><a href="#">College Scorecard Design System</a></li>
+        <li><a href="#">Launch</a></li>
+        <li><a href="#">Whispir for Impact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Play</h3>
+      <ul>
+        <li><a href="#">Film</a></li>
+        <li><a href="#">Digitals</a></li>
+        <li><a href="#">Illustrations</a></li>
+        <li><a href="#">Graphics</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const glow = document.getElementById('cursor-glow');
+      let x = -400, y = -400, tx = -400, ty = -400;
+
+      document.addEventListener('mousemove', function (e) {
+        tx = e.clientX;
+        ty = e.clientY;
+      });
+
+      function tick() {
+        x += (tx - x) * 0.1;
+        y += (ty - y) * 0.1;
+        glow.style.left = x + 'px';
+        glow.style.top  = y + 'px';
+        requestAnimationFrame(tick);
+      }
+      tick();
+    })();
+  </script>
+</body>
+</html>
