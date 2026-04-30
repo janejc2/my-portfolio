@@ -72,7 +72,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 64px;
+      padding: 20px 100px;
     }
 
     .nav-logo {
@@ -124,7 +124,7 @@
 
     /* ── HERO ────────────────────────────────────────── */
     .hero {
-      padding: 48px 64px 64px;
+      padding: 48px 100px 64px;
     }
 
     .hero-tags {
@@ -139,7 +139,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(36px, 5vw, 56px);
+      font-size: clamp(40px, 5vw, 60px);
       font-weight: 500;
       line-height: 1.2;
       /* ~2/3 of viewport at desktop, bounded between 480px and 960px */
@@ -202,7 +202,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 48px 24px;
-      padding: 16px 64px 80px;
+      padding: 16px 100px 80px;
     }
 
     /* image / placeholder container */
@@ -275,7 +275,7 @@
     footer {
       background: var(--footer-bg);
       color: var(--cream);
-      padding: 56px 64px;
+      padding: 56px 100px;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 32px;
@@ -388,9 +388,11 @@
 
     <div class="work-card card-1">
       <div class="card-media">
-        <img src="images/college-scorecard.jpg" alt="College Scorecard Redesign — redesigned search and compare interface for the U.S. Department of Education" />
+        <a href="college-scorecard.html">
+          <img src="images/college-scorecard.jpg" alt="College Scorecard Redesign — redesigned search and compare interface for the U.S. Department of Education" />
+        </a>
       </div>
-      <h2><a href="#">College Scorecard Redesign</a></h2>
+      <h2><a href="college-scorecard.html">College Scorecard Redesign</a></h2>
       <p class="tags">
         <span>UX/UI Design</span>
         <span>User Research</span>
@@ -451,7 +453,7 @@
     <div class="footer-col">
       <h3>Work</h3>
       <ul>
-        <li><a href="#">College Scorecard</a></li>
+        <li><a href="college-scorecard.html">College Scorecard</a></li>
         <li><a href="#">College Scorecard Design System</a></li>
         <li><a href="launch.html">Launch</a></li>
         <li><a href="#">Whispir for Impact</a></li>

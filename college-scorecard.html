@@ -198,7 +198,7 @@
     }
 
     .metric-number {
-      font-size: clamp(40px, 4vw, 56px);
+      font-size: 64px;
       font-weight: 400;
       line-height: 1;
       margin-bottom: 10px;
@@ -232,7 +232,7 @@
       font-size: clamp(56px, 6vw, 80px);
       font-weight: 400;
       line-height: 1;
-      color: var(--dark);
+      color: var(--green);
       margin-bottom: 14px;
     }
 
@@ -284,7 +284,167 @@
 
     .case-section img { width: 100%; display: block; border-radius: var(--radius); }
 
+    /* ── CALLOUT BOX ─────────────────────────────────── */
+    .callout {
+      background: #f2f3f1;
+      border-radius: 10px;
+      padding: 32px 40px;
+      margin-bottom: 40px;
+    }
+
+    .callout h4 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .callout ul {
+      padding-left: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .callout li + li { margin-top: 6px; }
+
+    /* ── FIGURE LABEL (above images) ─────────────────── */
+    .fig-label {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
     .stack { display: flex; flex-direction: column; gap: 20px; }
+
+    /* ── SECTION-DARK IMAGES ─────────────────────────── */
+    .section-dark img {
+      width: 100%;
+      display: block;
+      border-radius: var(--radius);
+    }
+
+    /* ── 3-COLUMN GRID ───────────────────────────────── */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    /* ── METRICS TABLE ───────────────────────────────── */
+    .table-metrics {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+
+    .table-metrics th {
+      text-align: left;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--muted);
+      padding: 10px 16px 10px 0;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .table-metrics td {
+      padding: 14px 16px 14px 0;
+      border-bottom: 1px solid #ebebeb;
+      vertical-align: top;
+    }
+
+    .table-metrics .improvement {
+      color: var(--green);
+      font-weight: 500;
+    }
+
+    /* ── LEARNING ITEMS ──────────────────────────────── */
+    .learning-item { margin-bottom: 36px; }
+    .learning-item:last-child { margin-bottom: 0; }
+
+    .learning-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    /* ── FINDINGS LABELS ─────────────────────────────── */
+    .findings-label {
+      font-size: 15px;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    /* ── INSIGHT ROWS ────────────────────────────────── */
+    .insight-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 64px;
+      align-items: start;
+      margin-bottom: 72px;
+    }
+
+    .insight-row:last-child { margin-bottom: 0; }
+
+    .insight-label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .insight-heading {
+      font-size: clamp(20px, 2.2vw, 30px);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    /* ── RECOMMENDATIONS GRID ────────────────────────── */
+    .recs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .rec-number {
+      font-size: clamp(56px, 6vw, 80px);
+      font-weight: 400;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .rec-title {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .rec-body {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── BODY LIST ───────────────────────────────────── */
+    .body-list {
+      padding-left: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 760px;
+      margin-bottom: 16px;
+    }
+
+    .body-list li + li { margin-top: 8px; }
+
+    /* ── CASE SUB-SUBHEADING ─────────────────────────── */
+    .case-subsubheading {
+      font-size: clamp(16px, 1.5vw, 19px);
+      font-weight: 500;
+      margin-bottom: 12px;
+      margin-top: 32px;
+    }
 
     .grid-2x2 {
       display: grid;
@@ -351,6 +511,9 @@
       .case-section    { padding: 48px 24px 0; }
       .metrics-grid    { grid-template-columns: 1fr; gap: 24px; }
       .process-grid    { grid-template-columns: 1fr; }
+      .insight-row     { grid-template-columns: 1fr; gap: 24px; }
+      .recs-grid       { grid-template-columns: 1fr; }
+      .grid-3          { grid-template-columns: 1fr; }
       .grid-2x2        { grid-template-columns: 1fr; }
       .pair            { grid-template-columns: 1fr; }
       footer           { grid-template-columns: 1fr; padding: 40px 24px; margin-top: 56px; }
@@ -456,6 +619,364 @@
         </div>
       </div>
     </div>
+
+    <!-- ── USER RESEARCH & DISCOVERY ────────────────── -->
+    <section class="case-section" aria-labelledby="research-heading">
+      <h2 id="research-heading">User Research &amp; Discovery</h2>
+
+      <p class="case-section-body">I co-led the research strategy and conducted 18 of 24 user interview sessions with high school students and parents. Our methodology balanced federal compliance requirements (Paperwork Reduction Act) with deep user understanding through direct observation.</p>
+
+      <div class="callout">
+        <h4>Research Questions</h4>
+        <ul>
+          <li>Are users able to successfully use all of the features of Scorecard?</li>
+          <li>Can users successfully interpret Scorecard data?</li>
+          <li>What are participants' perceptions of the website overall?</li>
+          <li>What would make the site more useful or easier to use?</li>
+        </ul>
+      </div>
+
+      <div class="case-subsection">
+        <p class="fig-label">Old College Scorecard Home Page</p>
+        <img src="images/cs-old-homepage.png" alt="Original College Scorecard homepage — blue banner with 'Find the right fit' headline and basic search bar" />
+      </div>
+
+      <div class="case-subsection">
+        <p class="fig-label">User Journey Map</p>
+        <img src="images/cs-journey-map.png" alt="User journey map — five stages from Awareness to Outcome, showing user actions, goals, feelings, pain points, and opportunities" />
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="case-subheading">Methodology</h3>
+        <p class="case-section-body">We conducted sessions virtually on Zoom and they lasted approximately an hour. To comply with the Paperwork Reduction Act, research was conducted through direct observation. Participants were asked to interact with the website as if they had landed there on their own.</p>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="case-subheading">Participant Demographics</h3>
+        <div class="pair">
+          <img src="images/cs-demographics-gender.png" alt="Participant demographics by gender — Female 50%, Male 45%, Non-binary 5%" />
+          <img src="images/cs-demographics-grade.png" alt="Participant demographics by grade — Senior 67%, Junior 22%, Sophomore 11%" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ACTIONABLE INSIGHTS ───────────────────────── -->
+    <section class="case-section" aria-labelledby="insights-heading">
+      <h2 id="insights-heading">Actionable Insights</h2>
+
+      <!-- Insight 01: text left, image right -->
+      <div class="insight-row">
+        <div>
+          <p class="insight-label">Insight 01</p>
+          <h3 class="insight-heading">The search bar is often overlooked, and users notice the resource links first.</h3>
+          <p class="case-section-body">Participants consistently skipped over the search bar and read the "Alternative Pathways to a Career" links first, sometimes clicking those links as their first action, resulting in a high bounce rate. This revealed we were designing for the DOE's organizational structure (education pathways first) rather than user mental models (I need to find a school).</p>
+        </div>
+        <div>
+          <img src="images/cs-insight-01.png" alt="Old College Scorecard homepage showing the search bar and Alternative Pathways to a Career section that users clicked first" />
+        </div>
+      </div>
+
+      <!-- Insight 02: image left, text right -->
+      <div class="insight-row">
+        <div>
+          <img src="images/cs-insight-02.png" alt="College Scorecard search results page showing the Compare Schools feature with checkmark icons" />
+        </div>
+        <div>
+          <p class="insight-label">Insight 02</p>
+          <h3 class="insight-heading">The Compare process is confusing.</h3>
+          <p class="case-section-body">Several participants, both students and parents, missed the Compare function entirely. Some noted that the process to add schools to compare was confusing. A few users also noted that the compare icon does not make its function obvious, and that the checkmark could be mistaken as a verified symbol.</p>
+        </div>
+      </div>
+
+      <!-- Insight 03: text left, image right -->
+      <div class="insight-row">
+        <div>
+          <p class="insight-label">Insight 03</p>
+          <h3 class="insight-heading">Students are confused by the technical definitions in the glossary and tooltips.</h3>
+          <p class="case-section-body">The current "glossary" exists as a data repository for developers and data scientists to access the data. Several participants found this glossary and were confused by the long definitions for terms like "Median Earnings" and "Average Annual Cost", especially the time ranges presented for the data.</p>
+        </div>
+        <div>
+          <img src="images/cs-insight-03.png" alt="College Scorecard glossary page and tooltip showing technical definitions for Average Annual Cost" />
+        </div>
+      </div>
+
+      <!-- Insight 04: image left, text right -->
+      <div class="insight-row">
+        <div>
+          <img src="images/cs-insight-04.png" alt="Flowchart showing user decision tree: Home Page → School in mind? → Yes (Search by School Name) or No (?)" />
+        </div>
+        <div>
+          <p class="insight-label">Insight 04</p>
+          <h3 class="insight-heading">Some students do not have a specific college in mind.</h3>
+          <p class="case-section-body">The key entry point into the site is the search bar, where a student must either search for a specific school or field of study. Several participants, early-stage students (9th–10th graders), did not have a specific college in mind to search for, and did not know where else to start. Late-stage students (11th–12th graders) preferred direct search. The single search-bar entry point only served one user type effectively.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RECOMMENDATIONS ────────────────────────────── -->
+    <section class="case-section" aria-labelledby="recs-heading">
+      <h2 id="recs-heading">Recommendations</h2>
+      <p class="case-section-body">I worked with the Product Manager and UX Researcher on my team to create a level of effort analysis and present the findings and following recommendations to the client:</p>
+
+      <div class="recs-grid">
+        <div>
+          <p class="rec-number">01</p>
+          <h3 class="rec-title">Homepage Redesign</h3>
+          <p class="rec-body">Redesign the College Scorecard homepage to emphasize the search bar and include additional information above the external links about how to use College Scorecard and the scope of its offerings.</p>
+        </div>
+        <div>
+          <p class="rec-number">02</p>
+          <h3 class="rec-title">Redesign Compare Schools Workflow</h3>
+          <p class="rec-body">Redesign the compare button throughout the site and fix accessibility issues. Rethink the entire "Compare Schools" workflow to be more intuitive and apparent for users.</p>
+        </div>
+        <div>
+          <p class="rec-number">03</p>
+          <h3 class="rec-title">Plain Language Glossary Feature</h3>
+          <p class="rec-body">Create a plain language glossary and definitions that are more accessible to high school students and parents. Use plain language for key metrics on the consumer website and create plain language tooltips. Rename the current "Glossary" to Data Definitions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOMEPAGE REDESIGN (Section 02) ─────────────── -->
+    <section class="case-section" aria-labelledby="homepage-redesign-heading">
+      <h2 id="homepage-redesign-heading">Homepage Redesign</h2>
+      <p class="case-section-body">I compiled analytics showing high bounce rates and findings from user research sessions with students that didn't know where to start when using the site, or found the existing homepage to look outdated.</p>
+      <p class="case-section-body">I presented this as a business problem, not just a design preference. I framed the homepage as a foundation that would make all the other features more discoverable and effective. The client agreed to tackle the home page as the first phase.</p>
+
+      <div class="case-subsection">
+        <h3 class="case-subheading">Design Decisions</h3>
+        <ul class="body-list">
+          <li>Moved external links below the fold despite partner concerns</li>
+          <li>Quick-search buttons for exploratory users (added dev complexity but addressed critical user need)</li>
+          <li>Plain language throughout (required rewriting DOE-approved content)</li>
+          <li>Prominent compare function explanation (initially resisted as "too much text" and making the home page too long)</li>
+        </ul>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="case-subheading">Design Exploration &amp; Iteration</h3>
+
+        <h4 class="case-subsubheading">Design Principles</h4>
+        <ul class="body-list">
+          <li><strong>Search-First Architecture:</strong> Make the search bar the visual and functional center of the page, reflecting user mental models of "I need to find a school."</li>
+          <li><strong>Progressive Entry Points:</strong> Serve both exploratory and targeted users with clear pathways that respect their journey stage.</li>
+          <li><strong>Trust Through Transparency:</strong> Emphasize government backing and explain data sources to build credibility with skeptical users.</li>
+        </ul>
+
+        <h4 class="case-subsubheading">Wireframe Evolution</h4>
+        <p class="case-sublabel" style="margin-top: 8px; margin-bottom: 12px;">Search Bar</p>
+        <ul class="body-list">
+          <li>The first area I tackled was modernizing and emphasizing the main search bar. User research participants mentioned the home page looked "outdated" and 2015-esque, so I aimed to modernize it.</li>
+          <li>The existing search had a "Show Me Options" tab to search by common filters like "Schools Near Me," "Most People Go In," and "Most People Graduate," as well as degree types. User testing participants liked this functionality, especially for Schools Near Me, but most never found this search as it was hidden behind a tab.</li>
+        </ul>
+
+        <p class="fig-label">College Scorecard home page before redesign</p>
+        <div class="stack">
+          <img src="images/cs-home-before-1.png" alt="College Scorecard homepage wireframe showing redesigned 'Search and compare colleges' layout with prominent search bar" />
+          <img src="images/cs-home-before-2.png" alt="College Scorecard 'Find the right fit' page with Show Me Options filter buttons for quick-search paths" />
+        </div>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="case-subheading">Quick Search</h3>
+        <p class="case-section-body">I continued explorations for the updated search bar by adding "quick search" buttons for these filters on the main home page so they were visible immediately. I also experimented with updating the colors of the page, drawing more attention to the search bar by removing the white box around it.</p>
+        <div class="grid-2x2">
+          <img src="images/cs-quick-search-1.png" alt="College Scorecard search bar exploration — iteration 1 with white search box" />
+          <img src="images/cs-quick-search-2.png" alt="College Scorecard search bar exploration — iteration 2 with teal accent color" />
+          <img src="images/cs-quick-search-3.png" alt="College Scorecard search bar exploration — iteration 3 with yellow search button" />
+          <img src="images/cs-quick-search-4.png" alt="College Scorecard search bar exploration — iteration 4 with green button and full-width bar" />
+        </div>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="case-subheading">Compare Feature Callout</h3>
+        <p class="case-section-body">The compare function explanation went through iterations. Early versions used more technical language ("Add schools to comparison tray"), but testing showed high school students responded better to conversational language:</p>
+        <img src="images/cs-compare-callout.png" alt="Redesigned homepage section 'See how colleges compare' — navy background with sample college comparison cards showing graduation rate, annual cost, and median earnings" />
+        <p class="case-section-body" style="margin-top: 32px;">Additional homepage content added visuals of the site, improved SEO, and helped users understand site features. It also had the added benefit of pushing the external links further down the page, decreasing the number of users that immediately clicked out of the site.</p>
+        <img src="images/cs-homepage-content.png" alt="Layered mockup of three redesigned homepage sections: Search for colleges using filters, Find what to study, and Alternate Pathways and Resources" />
+      </div>
+    </section>
+
+    <!-- ── FINAL DESIGN SOLUTION (green) ────────────────── -->
+    <section class="section-dark" aria-labelledby="final-design-heading">
+      <h2 id="final-design-heading">Final Design Solution</h2>
+      <div class="section-dark-content">
+        <p>College Scorecard is a federal tool serving over 12 million annual users: students, parents, and counselors making critical higher education decisions. When I joined the project, the platform suffered from fundamental usability issues that prevented users from accessing vital comparison data and features.</p>
+        <p>The Department of Education tasked my team at RTI International with identifying these barriers through comprehensive user research and redesigning the experience to better serve students at every stage of their college search journey.</p>
+      </div>
+      <div style="margin-top: 48px;">
+        <img src="images/cs-final-design.png" alt="Full-page view of the redesigned College Scorecard homepage showing search bar, compare colleges section, college profiles, search fields of study, and alternate pathways" />
+      </div>
+      <div style="margin-top: 48px;">
+        <h3>Key Changes</h3>
+        <ul class="body-list">
+          <li>Increased search bar size and moved to visual center</li>
+          <li>Quick-search buttons for common patterns (Schools Near Me, Most People Graduate)</li>
+          <li>Compare feature explanation with visual demonstration</li>
+          <li>Callouts of government sources to indicate trustworthy data</li>
+          <li>External links moved below fold but still accessible</li>
+          <li>SEO-optimized content explaining site features and unique data</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── MOBILE MOCKUPS ─────────────────────────────── -->
+    <section class="case-section" aria-labelledby="mobile-heading">
+      <h2 id="mobile-heading">Mobile Mockups</h2>
+      <div class="grid-3">
+        <img src="images/cs-mobile-1.png" alt="Mobile mockup of College Scorecard homepage showing Search Schools and Search Fields of Study with quick-search buttons" />
+        <img src="images/cs-mobile-2.png" alt="Mobile mockup showing Search for colleges using filters and See how schools compare sections" />
+        <img src="images/cs-mobile-3.png" alt="Mobile mockup of Compare Schools view with College State University card details" />
+      </div>
+    </section>
+
+    <!-- ── TESTING AND ITERATION ──────────────────────── -->
+    <section class="case-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">Testing and Iteration</h2>
+
+      <div class="case-subsection">
+        <h3 class="case-subheading">Validation Testing Approach</h3>
+        <p class="case-section-body">After client approval, I conducted additional validation testing with five high school students, comparing the original homepage with high-fidelity prototypes of the redesign.</p>
+        <p class="case-section-body">Sessions structure: 30-minute remote sessions via Zoom where students completed realistic tasks on both versions, thinking aloud throughout.</p>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="case-subheading">Key Findings</h3>
+        <p class="case-section-body">Participants had overall positive reactions to the redesigned College Scorecard homepage and preferred the redesigned option over the existing version of the homepage. I observed and documented:</p>
+        <p class="findings-label">What Worked:</p>
+        <ul class="body-list">
+          <li>Search or "Schools Near Me" button were the first action for 4 of 5 exploratory users</li>
+          <li>Compare feature explanation improved understanding of the feature</li>
+          <li>Students described redesign as "more modern," "trustworthy," and "easier to understand"</li>
+          <li>Preference for the redesigned homepage because of the addition of images and explanations of the site's features</li>
+        </ul>
+        <p class="findings-label">What Needed Refinement:</p>
+        <ul class="body-list">
+          <li>"Most People Get In" button confused users ("Get in where? What does this mean?")</li>
+          <li>Mobile quick-search buttons felt cramped on smaller screens</li>
+        </ul>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="case-subheading">Final Refinements</h3>
+        <p class="case-section-body">Based on validation findings, I made targeted refinements:</p>
+        <ul class="body-list">
+          <li>Removed "Most People Get In" button, adding option to reintroduce alternative buttons based on post-launch analytics</li>
+          <li>Adjusted mobile button layout to single-column stack for better touch targets</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── LAUNCH ──────────────────────────────────────── -->
+    <section class="case-section" aria-labelledby="launch-heading">
+      <h2 id="launch-heading">Launch</h2>
+      <p class="case-section-body">The redesigned homepage was launched in January 2025.</p>
+      <div class="case-subsection">
+        <img src="images/cs-launch.png" alt="Live College Scorecard homepage showing the redesigned search and compare interface with quick-search buttons" />
+      </div>
+    </section>
+
+    <!-- ── OUTCOME & IMPACT ───────────────────────────── -->
+    <section class="case-section" aria-labelledby="outcome-heading">
+      <h2 id="outcome-heading">Outcome &amp; Impact</h2>
+
+      <div class="case-subsection">
+        <h3 class="case-subheading">User Experience Improvements</h3>
+        <table class="table-metrics">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Before</th>
+              <th>After</th>
+              <th>Improvement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Homepage-to-search conversion</td>
+              <td>38%</td>
+              <td>51%</td>
+              <td class="improvement">+34%</td>
+            </tr>
+            <tr>
+              <td>Time to first search</td>
+              <td>47 seconds</td>
+              <td>23 seconds</td>
+              <td class="improvement">-51%</td>
+            </tr>
+            <tr>
+              <td>Time to add first school to compare</td>
+              <td>3.2 minutes</td>
+              <td>1.8 minutes</td>
+              <td class="improvement">-44%</td>
+            </tr>
+            <tr>
+              <td>Overall bounce rate</td>
+              <td>62%</td>
+              <td>47%</td>
+              <td class="improvement">-24%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="case-subheading">Business Impact</h3>
+        <ul class="body-list">
+          <li>Decreased support tickets in first 90 days after launch</li>
+          <li>Influenced budget allocation for continued UX improvements</li>
+        </ul>
+      </div>
+
+      <div class="case-subsection">
+        <h3 class="case-subheading">Organizational Impact</h3>
+        <ul class="body-list">
+          <li>Established user research protocols across internal team</li>
+          <li>Migrated design project from Adobe XD to Figma</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── KEY LEARNINGS ──────────────────────────────── -->
+    <section class="case-section" aria-labelledby="learnings-heading">
+      <h2 id="learnings-heading">Key Learnings</h2>
+
+      <div class="learning-item">
+        <p class="learning-title">Go back to the data</p>
+        <p class="case-section-body">Federal projects involve numerous stakeholders with competing priorities. I learned that presenting user research data and analytics early and often was the most effective way to build consensus and move projects forward.</p>
+      </div>
+
+      <div class="learning-item">
+        <p class="learning-title">Accessibility compliance improves design for everyone</p>
+        <p class="case-section-body">Rather than treating accessibility as a checkbox, I found that WCAG requirements pushed me to create clearer visual hierarchies, more readable typography, and better keyboard navigation, improvements that benefited all users.</p>
+      </div>
+    </section>
+
+    <!-- ── WHAT I'D DO DIFFERENTLY ────────────────────── -->
+    <section class="case-section" aria-labelledby="differently-heading">
+      <h2 id="differently-heading">What I'd Do Differently</h2>
+
+      <div class="learning-item">
+        <p class="learning-title">Earlier Stakeholder Alignment on Success Metrics</p>
+        <p class="case-section-body">We didn't establish clear success metrics with the DoE until after design approval. Next time, I'd define and agree on success metrics during discovery phase to ensure alignment throughout the project.</p>
+      </div>
+
+      <div class="learning-item">
+        <p class="learning-title">Deeper Integration Planning Between Phases</p>
+        <p class="case-section-body">The homepage redesign created expectations that we had to backfill in later phases (glossary, compare function). I'd spend more time upfront planning how phases connect and set appropriate user expectations.</p>
+      </div>
+    </section>
+
+    <!-- ── REFLECTION ─────────────────────────────────── -->
+    <section class="case-section" aria-labelledby="reflection-heading" style="padding-bottom: 80px;">
+      <h2 id="reflection-heading">Reflection</h2>
+
+      <div class="learning-item">
+        <p class="learning-title">How This Project Changed My Approach</p>
+        <p class="case-section-body">This project fundamentally shifted how I think about product design in complex organizational environments. I learned that design leadership isn't just about creating great solutions. It's about building consensus, navigating constraints, and using data to drive strategic decisions.</p>
+        <p class="case-section-body" style="margin-top: 16px;">The experience also deepened my appreciation for designing with real consequences. On some sites or applications, poor UX is annoying, but poor UX on a college search site like College Scorecard could lead to life-changing decisions based on incomplete information. That responsibility drives my commitment to evidence-based design and continuous improvement.</p>
+      </div>
+    </section>
 
   </main>
 
