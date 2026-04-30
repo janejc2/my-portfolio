@@ -169,7 +169,7 @@
     .section-dark {
       background: var(--green);
       color: #fff;
-      padding: 60px 100px;
+      padding: 64px 100px;
       margin-top: 64px;
     }
 
@@ -201,8 +201,9 @@
       margin-top: 32px;
     }
 
-    .metric-number {
-      font-size: 64px;
+    /* higher specificity to override .section-dark p { font-size: 16px } */
+    .section-dark .metric-number {
+      font-size: clamp(40px, 4.5vw, 64px);
       font-weight: 400;
       line-height: 1;
       margin-bottom: 10px;
@@ -251,21 +252,34 @@
       text-underline-offset: 3px;
     }
 
+    .process-link {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .process-link:hover {
+      color: var(--green-hover);
+      text-decoration: underline;
+    }
+
     /* ── GRAY SECTION VARIANT ────────────────────────── */
     .case-section-gray {
       background: #f2f3f1;
-      padding-bottom: 64px;
       margin-top: 40px;
       margin-bottom: 40px;
     }
 
-    /* consecutive gray sections collapse the gap between them */
-    .case-section-gray + .case-section-gray {
-      margin-top: 0;
-    }
+    /* consecutive gray sections: collapse gap between them */
+    .case-section-gray + .case-section-gray { margin-top: 0; }
+    .case-section-gray:has(+ .case-section-gray) { margin-bottom: 0; }
+
+    /* gray section directly before green: no white gap */
+    .case-section-gray + .section-dark { margin-top: 0; }
+    .case-section-gray:has(+ .section-dark) { margin-bottom: 0; }
 
     /* ── GENERIC CASE SECTION ────────────────────────── */
-    .case-section { padding: 64px 100px 0; }
+    .case-section { padding: 64px 100px; }
 
     .case-section h2 {
       font-size: clamp(28px, 3vw, 36px);
@@ -422,11 +436,17 @@
 
     .insight-row:last-child { margin-bottom: 0; }
 
-    /* cap the flowchart image (insight 04) so it doesn't over-scale */
+    /* cap insight images so they don't over-scale at large viewports */
+    .insight-row:first-child img {
+      max-height: 420px;
+      object-fit: contain;
+      width: 100%;
+    }
+
     .insight-row:last-child img:first-child {
       max-height: 420px;
       object-fit: contain;
-      width: auto;
+      width: 100%;
     }
 
     .insight-label {
@@ -651,15 +671,15 @@
       <div class="process-grid">
         <div>
           <p class="process-number">01</p>
-          <p class="process-label underlined">User Research &amp; Discovery</p>
+          <p class="process-label"><a class="process-link" href="#research-heading">User Research &amp; Discovery</a></p>
         </div>
         <div>
           <p class="process-number">02</p>
-          <p class="process-label underlined">Home Page Redesign</p>
+          <p class="process-label"><a class="process-link" href="#homepage-redesign-heading">Home Page Redesign</a></p>
         </div>
         <div>
           <p class="process-number">03</p>
-          <p class="process-label underlined">Design System</p>
+          <p class="process-label">Design System</p>
         </div>
         <div>
           <p class="process-number">04</p>
@@ -709,7 +729,7 @@
     </section>
 
     <!-- ── ACTIONABLE INSIGHTS ───────────────────────── -->
-    <section class="case-section case-section-gray" aria-labelledby="insights-heading">
+    <section class="case-section case-section-gray" aria-labelledby="insights-heading" style="padding-bottom: 114px;">
       <h2 id="insights-heading">Actionable Insights</h2>
 
       <!-- Insight 01: text left, image right -->
@@ -853,7 +873,7 @@
         <p>The Department of Education tasked my team at RTI International with identifying these barriers through comprehensive user research and redesigning the experience to better serve students at every stage of their college search journey.</p>
       </div>
       <div style="margin-top: 48px;">
-        <img src="images/cs-final-design.png" alt="Full-page view of the redesigned College Scorecard homepage showing search bar, compare colleges section, college profiles, search fields of study, and alternate pathways" />
+        <img src="images/cs-final-design.png" alt="Full-page view of the redesigned College Scorecard homepage showing search bar, compare colleges section, college profiles, search fields of study, and alternate pathways" style="max-height: 680px; object-fit: cover; object-position: top;" />
       </div>
       <div style="margin-top: 48px;">
         <h3>Key Changes</h3>
@@ -879,7 +899,7 @@
     </section>
 
     <!-- ── TESTING AND ITERATION ──────────────────────── -->
-    <section class="case-section" aria-labelledby="testing-heading">
+    <section class="case-section" aria-labelledby="testing-heading" style="padding-bottom: 64px;">
       <h2 id="testing-heading">Testing and Iteration</h2>
 
       <div class="case-subsection">
@@ -925,7 +945,7 @@
     </section>
 
     <!-- ── OUTCOME & IMPACT ───────────────────────────── -->
-    <section class="case-section case-section-gray" aria-labelledby="outcome-heading">
+    <section class="case-section case-section-gray" aria-labelledby="outcome-heading" style="padding-bottom: 114px;">
       <h2 id="outcome-heading">Outcome &amp; Impact</h2>
 
       <div class="case-subsection">
