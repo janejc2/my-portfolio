@@ -68,7 +68,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 64px;
+      padding: 20px 100px;
     }
 
     .nav-logo {
@@ -141,7 +141,7 @@
 
     /* ── CASE HEADER ─────────────────────────────────── */
     .case-header {
-      padding: 56px 64px 0 114px;
+      padding: 56px 100px 0 150px;
     }
 
     .case-meta {
@@ -187,7 +187,7 @@
 
     /* ── CASE HERO IMAGE ─────────────────────────────── */
     .case-hero {
-      padding: 40px 64px 0;
+      padding: 80px 100px 0;
     }
 
     .case-hero img {
@@ -200,12 +200,12 @@
     .section-dark {
       background: var(--green);
       color: #fff;
-      padding: 60px 64px;
+      padding: 60px 100px;
       margin-top: 64px;
     }
 
     .section-dark h2 {
-      font-size: clamp(28px, 2.8vw, 40px);
+      font-size: clamp(28px, 3vw, 36px);
       font-weight: 400;
       margin-bottom: 32px;
     }
@@ -240,11 +240,11 @@
 
     /* ── GENERIC CASE SECTION ────────────────────────── */
     .case-section {
-      padding: 64px 64px 0;
+      padding: 64px 100px 0;
     }
 
     .case-section h2 {
-      font-size: clamp(28px, 2.8vw, 40px);
+      font-size: clamp(28px, 3vw, 36px);
       font-weight: 400;
       margin-bottom: 36px;
     }
@@ -257,7 +257,7 @@
     .case-subsection:last-child { margin-bottom: 0; }
 
     .case-subheading {
-      font-size: clamp(22px, 2.2vw, 30px);
+      font-size: clamp(22px, 2.5vw, 32px);
       font-weight: 400;
       margin-bottom: 16px;
     }
@@ -301,6 +301,17 @@
       gap: 20px;
     }
 
+    /* ── WIREFRAMES 4-UP GRID ────────────────────────── */
+    .wireframes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .wireframes-grid img:last-child {
+      grid-column: 4;
+    }
+
     /* ── SIDE-BY-SIDE PAIR ───────────────────────────── */
     .pair {
       display: grid;
@@ -312,7 +323,7 @@
     footer {
       background: var(--footer-bg);
       color: var(--cream);
-      padding: 56px 64px;
+      padding: 56px 100px;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 32px;
@@ -387,7 +398,9 @@
       .case-hero    { padding: 32px 24px 0; }
       .section-dark { padding: 48px 24px; margin-top: 40px; }
       .case-section { padding: 48px 24px 0; }
-      .grid-2x2     { grid-template-columns: 1fr; }
+      .grid-2x2            { grid-template-columns: 1fr; }
+      .wireframes-grid     { grid-template-columns: 1fr 1fr; }
+      .wireframes-grid img:last-child { grid-column: auto; }
       .pair         { grid-template-columns: 1fr; }
       footer        { grid-template-columns: 1fr; padding: 40px 24px; margin-top: 56px; }
     }
@@ -462,11 +475,12 @@
     <!-- ── WEBSITE DESIGN SCREENSHOTS ────────────────── -->
     <section class="case-section" aria-labelledby="design-heading">
       <h2 id="design-heading">Website Design</h2>
-      <div class="grid-2x2">
-        <img src="images/launch-home.png" alt="Launch website — homepage with hero section and program overview" />
-        <img src="images/launch-site-1.png" alt="Launch website — about page with mission and equity focus content" />
-        <img src="images/launch-site-2.png" alt="Launch website — Why Join page with program benefits" />
-        <img src="images/launch-site-3.png" alt="Launch website — Join Now page with application details" />
+      <div class="stack">
+        <img src="images/launch-site-1.png" alt="Launch website — homepage with hero section and program overview" />
+        <img src="images/launch-site-2.png" alt="Launch website — about page with mission and equity focus content" />
+      </div>
+      <div style="margin-top: 20px;">
+        <img src="images/launch-icons.png" alt="Launch icon set — custom icons used throughout the website" />
       </div>
     </section>
 
@@ -537,12 +551,12 @@
 
       <div class="case-subsection">
         <h3 class="case-subheading">Low Fidelity Wireframes</h3>
-        <div class="stack">
+        <div class="wireframes-grid">
           <img src="images/launch-wireframes-1.png" alt="Launch lo-fi wireframes — Home page screens" />
           <img src="images/launch-wireframes-2.png" alt="Launch lo-fi wireframes — About page screens" />
           <img src="images/launch-wireframes-3.png" alt="Launch lo-fi wireframes — Why Join and Explore screens" />
           <img src="images/launch-wireframes-4.png" alt="Launch lo-fi wireframes — Join Now and application screens" />
-          <img src="images/launch-wireframes-5.png" alt="Launch lo-fi wireframes — Faculty and Blog screens" />
+          <img src="images/launch-wireframes-5.png" alt="Launch lo-fi wireframes — Meet the Grantees screens" />
         </div>
       </div>
     </section>
