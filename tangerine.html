@@ -109,6 +109,29 @@
       text-underline-offset: 3px;
     }
 
+    /* ── BUTTON ──────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+
+    .btn:hover { background: var(--green-hover); color: #fff; text-decoration: none; }
+    .btn:active { background: var(--green-dark); color: #fff; transform: scale(0.97); text-decoration: none; }
+    .btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; box-shadow: 0 0 0 5px var(--green); }
+
+    .btn-arrow { transition: transform 0.2s ease; }
+    .btn:hover .btn-arrow { transform: translate(3px, -3px); }
+
     /* ── CASE HEADER ─────────────────────────────────── */
     .case-header {
       padding: 56px 100px 0 150px;
@@ -148,6 +171,14 @@
     .case-intro p + p {
       margin-top: 1em;
     }
+
+    .case-intro a {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .case-intro a:hover { color: var(--green-hover); }
 
     /* ── CASE HERO IMAGE ─────────────────────────────── */
     .case-hero {
@@ -462,9 +493,16 @@
       <h1 class="case-title">Tangerine Site Redesign</h1>
 
       <div class="case-intro">
-        <p>Tangerine is an electronic data collection software. Its primary use is to capture students' responses in oral early grade reading and mathematics skills assessments.</p>
+        <p><a href="https://www.tangerinecentral.org/" target="_blank" rel="noopener">Tangerine</a> is an electronic data collection software. Its primary use is to capture students' responses in oral early grade reading and mathematics skills assessments.</p>
         <p>RTI International engaged me to conduct a heuristics review and lead the redesign of the Tangerine website — restructuring its information architecture, resolving brand inconsistencies, and paring down superfluous content to better serve its global user base.</p>
       </div>
+
+      <a href="https://www.tangerinecentral.org/" target="_blank" rel="noopener" class="btn">
+        View the Live Site
+        <svg class="btn-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </header>
 
     <!-- HERO IMAGE -->
