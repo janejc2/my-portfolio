@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Film — Jane J Chen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green:       #456453;
+      --green-hover: #4e7362;
+      --green-dark:  #3a5547;
+      --dark:        #1c1c1c;
+      --muted:       #555;
+      --footer-bg:   #456453;
+      --cream:       #f5efe0;
+      --radius:      6px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: #fff;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* ── FOCUS ─────────────────────────────────────── */
+    :focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    footer :focus-visible { outline-color: #fff; }
+
+    /* ── LINKS ───────────────────────────────────────── */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--green-hover);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    footer a { color: var(--cream); }
+    footer a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 100px;
+    }
+
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .logo-dot {
+      flex-shrink: 0;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: var(--green);
+      clip-path: polygon(50% 0%, 69.1% 3.8%, 85.4% 14.6%, 96.2% 30.9%, 100% 50%, 96.2% 69.1%, 85.4% 85.4%, 69.1% 96.2%, 50% 100%, 30.9% 96.2%, 14.6% 85.4%, 3.8% 69.1%, 0% 50%, 3.8% 30.9%, 14.6% 14.6%, 30.9% 3.8%);
+      transition: clip-path 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  transform  0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .nav-logo:hover { text-decoration: none; }
+
+    .nav-logo:hover .logo-dot {
+      clip-path: polygon(50% 0%, 59.6% 26.9%, 67.7% 32.3%, 73.1% 40.4%, 100% 50%, 73.1% 59.6%, 67.7% 67.7%, 59.6% 73.1%, 50% 100%, 40.4% 73.1%, 32.3% 67.7%, 26.9% 59.6%, 0% 50%, 26.9% 40.4%, 32.3% 32.3%, 40.4% 26.9%);
+      transform: rotate(15deg);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      color: var(--dark);
+    }
+
+    .nav-links a.active {
+      color: var(--green);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── PAGE HEADER ─────────────────────────────────── */
+    .page-header {
+      padding: 40px 100px 32px;
+    }
+
+    .breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--muted);
+      padding: 0;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+    }
+
+    .back-link:hover {
+      color: var(--green-hover);
+      text-decoration: underline;
+    }
+
+    .breadcrumb-current {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    /* ── GALLERY ─────────────────────────────────────── */
+    .gallery {
+      padding: 0 100px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .gallery img {
+      display: block;
+      width: 100%;
+      border-radius: var(--radius);
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--footer-bg);
+      color: var(--cream);
+      padding: 56px 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 32px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .footer-brand .name {
+      font-size: 15px;
+      font-weight: 500;
+      color: #f0f8f0;
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .footer-col h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: #f0f8f0;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul a { font-size: 14px; }
+
+    /* ── CURSOR GLOW ─────────────────────────────────── */
+    #cursor-glow {
+      position: fixed;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(69, 100, 83, 0.2) 0%,
+        rgba(69, 100, 83, 0.07) 45%,
+        transparent 70%
+      );
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 9999;
+      top: -400px;
+      left: -400px;
+    }
+
+    @media (hover: none) { #cursor-glow { display: none; } }
+    @media (prefers-reduced-motion: reduce) { #cursor-glow { display: none; } }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 720px) {
+      nav           { padding: 16px 24px; }
+      .page-header  { padding: 32px 24px 24px; }
+      .gallery      { padding: 0 24px 64px; grid-template-columns: 1fr; gap: 20px; }
+      footer        { grid-template-columns: 1fr; padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      Jane J Chen<span class="logo-dot" aria-hidden="true"></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Work</a></li>
+      <li><a href="play.html" class="active">Play</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="play.html" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Play
+        </a>
+        <span aria-hidden="true">/</span>
+        <span class="breadcrumb-current">Film</span>
+      </nav>
+    </header>
+
+    <!-- GALLERY — all horizontal -->
+    <section class="gallery" aria-label="Film photography gallery">
+      <img src="images/film-1.jpeg"  alt="Film photo 1" />
+      <img src="images/film-2.jpeg"  alt="Film photo 2" />
+      <img src="images/film-3.JPG"   alt="Film photo 3" />
+      <img src="images/film-4.JPG"   alt="Film photo 4" />
+      <img src="images/film-5.JPG"   alt="Film photo 5" />
+      <img src="images/film-6.JPG"   alt="Film photo 6" />
+      <img src="images/film-7.JPG"   alt="Film photo 7" />
+      <img src="images/film-8.JPG"   alt="Film photo 8" />
+      <img src="images/film-9.JPG"   alt="Film photo 9" />
+      <img src="images/film-10.jpg"  alt="Film photo 10" />
+      <img src="images/film-11.jpg"  alt="Film photo 11" />
+      <img src="images/film-12.jpg"  alt="Film photo 12" />
+      <img src="images/film-13.jpg"  alt="Film photo 13" />
+      <img src="images/film-14.jpg"  alt="Film photo 14" />
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <span class="name">Jane J Chen</span>
+      <div class="footer-contact">
+        <a href="mailto:hello@janejchen.com">hello@janejchen.com</a>
+        <a href="https://linkedin.com/in/janejchen" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h3>Work</h3>
+      <ul>
+        <li><a href="college-scorecard.html">College Scorecard</a></li>
+        <li><a href="launch.html">Launch</a></li>
+        <li><a href="whispir.html">Whispir for Impact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Play</h3>
+      <ul>
+        <li><a href="film.html">Film</a></li>
+        <li><a href="digitals.html">Digitals</a></li>
+        <li><a href="illustrations.html">Illustrations</a></li>
+        <li><a href="graphics.html">Graphics</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>About</h3>
+      <ul>
+        <li><a href="about.html">About Me</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const glow = document.getElementById('cursor-glow');
+      let x = -400, y = -400, tx = -400, ty = -400;
+
+      document.addEventListener('mousemove', function (e) {
+        tx = e.clientX;
+        ty = e.clientY;
+      });
+
+      function tick() {
+        x += (tx - x) * 0.1;
+        y += (ty - y) * 0.1;
+        glow.style.left = x + 'px';
+        glow.style.top  = y + 'px';
+        requestAnimationFrame(tick);
+      }
+      tick();
+    })();
+  </script>
+</body>
+</html>
